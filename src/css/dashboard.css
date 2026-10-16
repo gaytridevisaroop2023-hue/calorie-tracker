@@ -1,0 +1,294 @@
+/* ═══════════════════════════════════════════════════════
+   Dashboard Page Styles
+   ═══════════════════════════════════════════════════════ */
+
+/* ── Grid Layout ── */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-6);
+}
+
+.dashboard-grid .full-width {
+  grid-column: 1 / -1;
+}
+
+/* ── Calorie Ring ── */
+.calorie-ring-card {
+  background: var(--bg-surface);
+  border-radius: var(--radius-2xl);
+  border: 1px solid var(--color-neutral-100);
+  padding: var(--space-8);
+  text-align: center;
+  box-shadow: var(--shadow-card);
+  transition: all var(--transition-base);
+}
+
+.calorie-ring-card:hover {
+  box-shadow: var(--shadow-card-hover);
+}
+
+.calorie-ring-wrapper {
+  position: relative;
+  width: 220px;
+  height: 220px;
+  margin: 0 auto var(--space-6);
+}
+
+.calorie-ring-wrapper svg {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.calorie-ring-wrapper .ring-bg {
+  fill: none;
+  stroke: var(--color-neutral-100);
+  stroke-width: 12;
+}
+
+.calorie-ring-wrapper .ring-progress {
+  fill: none;
+  stroke-width: 12;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 1s cubic-bezier(0.34, 1.56, 0.64, 1),
+              stroke 0.4s ease;
+}
+
+.calorie-ring-wrapper .ring-center {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.calorie-ring-wrapper .ring-center .remaining-value {
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-bold);
+  font-family: var(--font-mono);
+  line-height: 1;
+  color: var(--text-primary);
+}
+
+.calorie-ring-wrapper .ring-center .remaining-label {
+  font-size: var(--font-size-xs);
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: var(--font-weight-medium);
+  margin-top: var(--space-1);
+}
+
+.calorie-summary {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-8);
+  margin-top: var(--space-4);
+}
+
+.calorie-summary .summary-item {
+  text-align: center;
+}
+
+.calorie-summary .summary-value {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  font-family: var(--font-mono);
+}
+
+.calorie-summary .summary-label {
+  font-size: var(--font-size-xs);
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* ── Macro Cards ── */
+.macros-card {
+  background: var(--bg-surface);
+  border-radius: var(--radius-2xl);
+  border: 1px solid var(--color-neutral-100);
+  padding: var(--space-6);
+  box-shadow: var(--shadow-card);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.macro-item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.macro-item .macro-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.macro-item .macro-info {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.macro-item .macro-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: var(--radius-full);
+  flex-shrink: 0;
+}
+
+.macro-item .macro-dot.protein { background: var(--color-protein); }
+.macro-item .macro-dot.carbs   { background: var(--color-carbs); }
+.macro-item .macro-dot.fat     { background: var(--color-fat); }
+
+.macro-item .macro-name {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--text-primary);
+}
+
+.macro-item .macro-value {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  font-family: var(--font-mono);
+  color: var(--text-primary);
+}
+
+/* ── Meals Summary ── */
+.meals-summary-card {
+  background: var(--bg-surface);
+  border-radius: var(--radius-2xl);
+  border: 1px solid var(--color-neutral-100);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+}
+
+.meals-summary-card .card-header {
+  padding: var(--space-5) var(--space-6);
+  border-bottom: 1px solid var(--color-neutral-100);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.meal-group {
+  padding: var(--space-4) var(--space-6);
+  border-bottom: 1px solid var(--color-neutral-50);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: background var(--transition-fast);
+}
+
+.meal-group:last-child {
+  border-bottom: none;
+}
+
+.meal-group:hover {
+  background: var(--color-neutral-50);
+}
+
+.meal-group .meal-info {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.meal-group .meal-emoji {
+  font-size: var(--font-size-xl);
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-md);
+  background: var(--color-primary-50);
+}
+
+.meal-group .meal-name {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+}
+
+.meal-group .meal-items-count {
+  font-size: var(--font-size-xs);
+  color: var(--text-tertiary);
+}
+
+.meal-group .meal-calories {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  font-family: var(--font-mono);
+  color: var(--color-primary-600);
+}
+
+/* ── Water Widget (Dashboard) ── */
+.water-widget {
+  background: var(--bg-surface);
+  border-radius: var(--radius-2xl);
+  border: 1px solid var(--color-neutral-100);
+  padding: var(--space-6);
+  box-shadow: var(--shadow-card);
+}
+
+.water-widget .water-progress-visual {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  margin-top: var(--space-4);
+}
+
+.water-widget .water-glasses {
+  display: flex;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+.water-widget .water-glass {
+  width: 28px;
+  height: 36px;
+  border-radius: 0 0 var(--radius-md) var(--radius-md);
+  border: 2px solid var(--color-neutral-200);
+  position: relative;
+  overflow: hidden;
+  transition: all var(--transition-base);
+}
+
+.water-widget .water-glass.filled {
+  border-color: var(--color-water);
+}
+
+.water-widget .water-glass.filled::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  background: linear-gradient(180deg, var(--color-water-light), var(--color-water));
+  border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+  animation: fillUp 0.3s ease;
+}
+
+.water-widget .water-stats {
+  display: flex;
+  gap: var(--space-6);
+  margin-top: var(--space-4);
+}
+
+.water-widget .water-stat-value {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  font-family: var(--font-mono);
+  color: var(--color-water);
+}
+
+.water-widget .water-stat-label {
+  font-size: var(--font-size-xs);
+  color: var(--text-secondary);
+}

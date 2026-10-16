@@ -1,0 +1,15 @@
+{
+  "name": "nutritrack",
+  "private": true,
+  "version": "1.0.0",
+  "description": "NutriTrack - Calories Tracker Website",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^8.3.4"
+  }
+}

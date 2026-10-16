@@ -1,0 +1,209 @@
+/* ═══════════════════════════════════════════════════════
+   Water Tracker Page Styles
+   ═══════════════════════════════════════════════════════ */
+
+.water-page-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-6);
+}
+
+/* ── Water Bottle Visualization ── */
+.water-bottle-card {
+  background: var(--bg-surface);
+  border-radius: var(--radius-2xl);
+  border: 1px solid var(--color-neutral-100);
+  padding: var(--space-8);
+  box-shadow: var(--shadow-card);
+  text-align: center;
+}
+
+.water-bottle-visual {
+  position: relative;
+  width: 120px;
+  height: 240px;
+  margin: var(--space-6) auto;
+  border: 3px solid var(--color-water);
+  border-radius: 0 0 var(--radius-2xl) var(--radius-2xl);
+  overflow: hidden;
+  background: var(--color-neutral-50);
+}
+
+.water-bottle-visual::before {
+  content: '';
+  position: absolute;
+  top: -12px;
+  left: 25%;
+  right: 25%;
+  height: 12px;
+  border: 3px solid var(--color-water);
+  border-bottom: none;
+  border-radius: var(--radius-md) var(--radius-md) 0 0;
+}
+
+.water-bottle-fill {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(180deg, rgba(59, 130, 246, 0.3), rgba(59, 130, 246, 0.7));
+  transition: height 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+  border-radius: 0 0 var(--radius-xl) var(--radius-xl);
+}
+
+.water-bottle-fill::after {
+  content: '';
+  position: absolute;
+  top: -6px;
+  left: -10%;
+  right: -10%;
+  height: 12px;
+  background: radial-gradient(ellipse at center, rgba(59, 130, 246, 0.4) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: wave 2s ease-in-out infinite;
+}
+
+@keyframes wave {
+  0%, 100% { transform: translateY(0) scaleX(1); }
+  50% { transform: translateY(-3px) scaleX(1.05); }
+}
+
+.water-percentage {
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-bold);
+  font-family: var(--font-mono);
+  color: var(--color-water);
+  margin-top: var(--space-4);
+}
+
+.water-amount-text {
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+  margin-top: var(--space-1);
+}
+
+/* ── Quick Add Buttons ── */
+.water-actions-card {
+  background: var(--bg-surface);
+  border-radius: var(--radius-2xl);
+  border: 1px solid var(--color-neutral-100);
+  padding: var(--space-6);
+  box-shadow: var(--shadow-card);
+}
+
+.quick-add-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-3);
+  margin-top: var(--space-4);
+}
+
+.quick-add-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-4);
+  border-radius: var(--radius-xl);
+  border: 2px solid var(--color-neutral-200);
+  background: var(--bg-surface);
+  transition: all var(--transition-base);
+  cursor: pointer;
+}
+
+.quick-add-btn:hover {
+  border-color: var(--color-water);
+  background: var(--color-water-light);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.quick-add-btn .water-icon {
+  font-size: var(--font-size-xl);
+}
+
+.quick-add-btn .water-amount {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-primary);
+}
+
+.custom-water-input {
+  margin-top: var(--space-4);
+  display: flex;
+  gap: var(--space-3);
+}
+
+.custom-water-input .form-input {
+  flex: 1;
+}
+
+/* ── Water Log ── */
+.water-log-card {
+  background: var(--bg-surface);
+  border-radius: var(--radius-2xl);
+  border: 1px solid var(--color-neutral-100);
+  box-shadow: var(--shadow-card);
+  grid-column: 1 / -1;
+}
+
+.water-log-list {
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.water-log-entry {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-3) var(--space-6);
+  border-bottom: 1px solid var(--color-neutral-50);
+  transition: background var(--transition-fast);
+}
+
+.water-log-entry:hover {
+  background: var(--color-neutral-50);
+}
+
+.water-log-entry .log-info {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.water-log-entry .log-icon {
+  color: var(--color-water);
+  font-size: var(--font-size-lg);
+}
+
+.water-log-entry .log-amount {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  font-family: var(--font-mono);
+}
+
+.water-log-entry .log-time {
+  font-size: var(--font-size-xs);
+  color: var(--text-tertiary);
+}
+
+.water-log-entry .log-delete {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-md);
+  color: var(--text-tertiary);
+  opacity: 0;
+  transition: all var(--transition-fast);
+}
+
+.water-log-entry:hover .log-delete {
+  opacity: 1;
+}
+
+.water-log-entry .log-delete:hover {
+  background: var(--color-danger-light);
+  color: var(--color-danger);
+}
